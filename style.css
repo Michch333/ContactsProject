@@ -1,0 +1,86 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer {
+    background-color: grey;
+    opacity: 0.4;
+    width: 600px;
+    border: 2px, solid, blue;
+    height: 400px;
+    margin: auto;
+    padding-left: 15px;
+}
+
+#relation {
+    height: 40px;
+    width: 512px;
+
+
+}
+
+#myContacts {
+    padding-top: 20px;
+    color: white;
+    font-size: 40px;
+    height: 40px;
+    text-align: center;
+    
+}
+
+#addButton {
+    margin-top: 10px;
+    text-align: center;
+    color: black;
+    height: 30px;
+    width: 512px;
+    border-radius: 10px;
+}
+
+.inputBoxes {
+    background-color: white;
+    margin-top: 12px;
+    padding-top: 9px;
+    padding-left: 10px;
+    text-align: left;
+    border: 1px solid black;
+    border-radius: 12px;
+    height: 30px;
+    width: 500px;
+}
+
+#idBlocksContainer {
+    margin-top: 60px;
+    height: 150px;
+    width: 100%;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.idBlocks {
+    height: 100%;
+    width: 250px;
+    border: 1px solid blue;
+    background-color: lightgrey;
+    color: black;
+    text-align: center;  
+    position: relative;
+}
+
+i, .deleteBtn {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+}
+
+.deleteBtn {
+    height: 30px;
+    width: 30px;
+    border: none;
+    
+}

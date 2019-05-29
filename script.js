@@ -1,6 +1,24 @@
 class AddressBook {
     constructor () {
-        this.contacts = [];
+        this.contacts = [{
+            name: "Mike",
+            email: "Mike@mike.com",
+            phone: 7347728158,
+            relation: "Family"
+        },
+        {
+            name: "John",
+            email: "John@john.com",
+            phone: 3134544457,
+            relation: "Family" 
+        },
+        {
+            name: "Mike",
+            email: "Mike@mike.com",
+            phone: 7347728158,
+            relation: "Family"
+        }
+        ];
     }
 
     addContact (_contact) {
@@ -14,12 +32,57 @@ class AddressBook {
     }
 
     print(){
-        console.clear();
-        this.contacts.forEach((c, i) => {
+        // console.clear();
+        this.contacts.forEach(function(c, i)  {
             console.log(`[${i}]. name: ${c.name}, email: ${c.email}, phone number: ${c.phone}, relation: ${c.relation}`);
         });
     }
+
+    display(){
+        
+        let displayContact = document.getElementById("idBlocksContainer");
+        console.log(displayContact);
+
+        this.contacts.forEach(function(c, i) {
+
+            // create elements
+            let divElement = document.createElement('div');
+            divElement.className = "idBlocks";
+            
+            let pElement = document.createElement('p');
+            let pTextNode = document.createTextNode(`
+                Name: ${c.name}
+                Email: ${c.email}
+                Phone: ${c.phone}
+                Relation: ${c.relation}
+            `);
+            pElement.appendChild(pTextNode);
+
+            let buttonElement = document.createElement('button');
+            buttonElement.className = 'deleteBtn';
+            
+            let iElement = document.createElement('i');
+            iElement.className = 'material-icons';
+
+            let textNode = document.createTextNode("delete");
+            iElement.appendChild(textNode);
+
+            // insert elements
+            buttonElement.appendChild(iElement);
+            divElement.appendChild(pElement);
+
+            divElement.appendChild(buttonElement);
+            displayContact.appendChild(divElement);
+        })
+
+        // for(let i = 0; i < displayContact.length; i++) {
+        //     let textNode = document.createTextNode("I'm a baby");
+        //     displayContact[i].appendChild(textNode);
+        //     console.log(displayContact[i]);
+        // }
+    }
 }
+
 
 
 class Contact {
@@ -31,45 +94,103 @@ class Contact {
     }
 }
 
+let myAddressBook = new AddressBook();
 
-function run() {
-    let myAddressBook = new AddressBook();
+let addButton = document.getElementById("addButton");
+addButton.addEventListener("click", function(){
+    inputName = document.getElementById("name").value;
+    inputEmail = document.getElementById("email").value;
+    inputPhone = document.getElementById("phone").value;
+    inputRelation = document.getElementById("relation").value;
+    newContact = new Contact (inputName, inputEmail, inputPhone, inputRelation);
+    myAddressBook.addContact(newContact);
+    console.log(myAddressBook);
 
-    while (true) {
 
-        let promptedMessage = myAddressBook.contacts.length > 0 
-            ? "Do you want to (a)dd, (r)emove, (p)rint or (e)xit?"
-            : "Do you want to (a)dd, (p)rint or (e)xit?";
 
-        let actions = prompt(promptedMessage);
 
-        if (actions === "a"){
-            myAddressBook.addContact(this.infoForContact());
-        }
+})
 
-        else if (actions === "r" && myAddressBook.contacts.length > 0) {
-            let indexToDelete = prompt("What index would you like to delete?")
-            myAddressBook.deleteAt(indexToDelete);
-        }
+console.log(myAddressBook);
+myAddressBook.display();
 
-        else if (actions === "p") {
-            myAddressBook.print();
-        }
+let preExistingContacts = [{
+    name: "Mike",
+    email: "Mike@mike.com",
+    phone: 7347728158,
+    relation: "Family"
+},
+{
+    name: "John",
+    email: "John@john.com",
+    phone: 3134544457,
+    relation: "Family" 
+},
+{
+    name: "Jesse",
+    email: "Jesse@Jesse.com",
+    phone: 7347728158,
+    relation: "Family"
+}
+];
 
-        else if (actions === "e") {
-            alert("Farewell!");
-            break;
-        }
-    }
+let deleteButtons = document.getElementsByClassName("deleteBtn");
+for (let i = 0; i < deleteButtons.length; i++){
+    deleteButtons[i].addEventListener("click", function(){
+        myAddressBook.deleteAt([i]);
+    })
 }
 
-function infoForContact () {
-    let name = prompt("What is the contacts name?");
-    let email =prompt( "What is the contacts email?");
-    let phone =prompt( "What is the contacts phone number?");
-    let relation = prompt("What is the contacts relation?");
-    return new Contact(name, email, phone, relation);
+
+
+for (let i = 0; i < deleteButtons.length; i++){
+    deleteButtons[i].addEventListener("click", function(){
+        myAddressBook.deleteAt(i);
+    })
 }
 
 
-run();
+
+
+
+
+
+
+
+
+
+//     while (true) {
+
+//         let promptedMessage = myAddressBook.contacts.length > 0 
+//             ? "Do you want to (a)dd, (r)emove, (p)rint or (e)xit?"
+//             : "Do you want to (a)dd, (p)rint or (e)xit?";
+
+//         let actions = prompt(promptedMessage);
+
+//         if (actions === "a"){
+//             myAddressBook.addContact(this.infoForContact());
+//         }
+
+//         else if (actions === "r" && myAddressBook.contacts.length > 0) {
+//             let indexToDelete = prompt("What index would you like to delete?")
+//             myAddressBook.deleteAt(indexToDelete);
+//         }
+
+//         else if (actions === "p") {
+//             myAddressBook.print();
+//         }
+
+//         else if (actions === "e") {
+//             alert("Farewell!");
+//             break;
+//         }
+//     }
+// }
+
+// function infoForContact () {
+//     let name = prompt("What is the contacts name?");
+//     let email =prompt( "What is the contacts email?");
+//     let phone =prompt( "What is the contacts phone number?");
+//     let relation = prompt("What is the contacts relation?");
+//     return new Contact(name, email, phone, relation);
+// }

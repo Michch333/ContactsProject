@@ -4,10 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <title>Contacts Project - Mike Campbell</title>
 </head>
 <body>
-    
+    <div class="loginContainer">
+        <h1 id="myContacts">My Contacts</h1>
+        <form class="form">
+            <input type="text" class="inputBoxes" placeholder="Name" id="name" name="name"></input>
+            <input type="email" class="inputBoxes" placeholder="Email" id="email" name="email"></input>
+            <input type="number" class="inputBoxes" placeholder="Phone Number" id="phone" name="phone"></input>
+            <select class="inputBoxes select" id="relation" name="relation">
+                <option class="options" selected value="Family">Family</option>
+                <option class="options" value="Friend">Friend</option>
+                <option class="options" value="CoWorker">CoWorker</option>
+                <option class="options" value="Other">Other</option>
+            </select>
+            <button type="submit" id="addButton">Add</button>
+        </form>
+    </div>
+
+    <div id="idBlocksContainer">
+        <!-- <div class="idBlocks">Test
+            <button class="deleteBtn" type="button" ></button><i class="material-icons">delete</i></button></div>
+        <div class="idBlocks">
+            <button class="deleteBtn" type="button" ></button><i class="material-icons">delete</i>
+        </div></button>
+        <div class="idBlocks">
+            <button class="deleteBtn" type="button" ></button><i class="material-icons">delete</i>
+        </div></button> -->
+    </div>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
